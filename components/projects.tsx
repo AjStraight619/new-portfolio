@@ -11,7 +11,7 @@ type ProjectsProps = {
 
 const Projects = ({ totalCommits, projects }: ProjectsProps) => {
   return (
-    <section className="w-full flex justify-center items-center">
+    <section className="w-full flex justify-center items-center pt-12">
       <motion.ul className="flex flex-col items-center justify-center gap-4 w-full max-w-4xl">
         {projects.map((proj, idx) => (
           <motion.li key={idx}>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ExperiencePage = () => {
-  return <div>ExperiencePage</div>;
+  return <div className="min-h-screen p-24">ExperiencePage</div>;
 };
 
 export default ExperiencePage;

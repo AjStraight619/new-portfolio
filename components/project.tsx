@@ -44,7 +44,7 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
 
   return (
     <Card className="relative w-full max-w-3xl">
-      <div className="absolute top-4 right-2 flex flex-col items-center gap-2">
+      <div className="absolute top-4 right-4 flex flex-col items-center gap-2">
         <p className="text-muted-foreground">
           Updated At: {project.lastCommitDate}
         </p>
@@ -81,7 +81,7 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
       </CardContent>
       <CardFooter>
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-muted-foreground mr-2">Tech Stack:</span>
+          {/* <span className="text-muted-foreground mr-2">Tech Stack:</span> */}
           {tags}
         </div>
       </CardFooter>
