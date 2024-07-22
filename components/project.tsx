@@ -61,9 +61,10 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
         <Image
           src={project.imageUrl}
           alt="Project I worked on"
+          priority={true}
           width={600}
           height={400}
-          quality={100}
+          quality={85}
           blurDataURL="data..."
           placeholder="blur"
           className="hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
