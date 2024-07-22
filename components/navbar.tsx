@@ -71,7 +71,8 @@ export const Navbar = () => {
                       ? 'dark:text-white text-black'
                       : 'text-muted-foreground'
                   }`}
-                  prefetch={link.label === 'Projects' ? true : false}
+                  // prefetch={link.label === 'Projects' ? true : false}
+
                   href={link.route}
                 >
                   {link.label}
