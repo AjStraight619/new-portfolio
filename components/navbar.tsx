@@ -50,6 +50,7 @@ export const Navbar = () => {
                       }`}
                       href={link.route}
                       onClick={() => setOpen(false)}
+                      prefetch={link.label === 'Projects' ? true : false}
                     >
                       {link.label}
                     </Link>

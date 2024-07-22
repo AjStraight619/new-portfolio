@@ -1,7 +1,7 @@
 import { projectsData } from '@/lib/data';
 import React from 'react';
 import Projects from './projects';
-import { dynamicDataFetcher } from '@/lib/dynamic-data-fetcher';
+import { dynamicDataFetcher } from '@/lib/dd-fetch2';
 
 export const ProjectsFetcher = async () => {
   let totalCommits: number = 0;
