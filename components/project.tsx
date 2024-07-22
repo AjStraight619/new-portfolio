@@ -31,10 +31,10 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
           style={{
             borderColor: `${color}`,
           }}
-          className="inline-flex items-center mr-2 dark:bg-muted"
+          className="inline-flex items-center mr-2"
         >
           <TagIcon style={{ color, fontSize: '20px', marginRight: '8px' }} />
-          <span style={{ color }}>{tag}</span>
+          <span>{tag}</span>
         </Badge>
       );
     }

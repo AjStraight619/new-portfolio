@@ -34,9 +34,9 @@ export const navExternalLinks = [
   },
 ];
 
-const GITHUB_BASE_URL = 'https://github.com/AjStraight619';
-
 export const OWNER = 'AjStraight619';
+
+export const skills = [];
 
 export const projectsData: ProjectData[] = [
   {
@@ -45,15 +45,7 @@ export const projectsData: ProjectData[] = [
     repo: 'pictionary',
     description:
       'Multiplayer game inspired by Skribbl.io. Using Go for WebSocket communication with the client.',
-    tags: [
-      'TypeScript',
-      'Next.JS',
-      'Go',
-      'Tailwind',
-      'Prisma',
-      'Framer Motion',
-      'Zod',
-    ],
+    tags: ['Next.JS', 'Go', 'Tailwind', 'Prisma', 'Framer Motion', 'Zod'],
     imageUrl: '/pictionary.png',
     href: 'https://pictionary-tan.vercel.app/',
   },
@@ -62,7 +54,7 @@ export const projectsData: ProjectData[] = [
     status: 'Completed',
     repo: 'algo-visualizer',
     description: 'Visualize pathfinding algorithms.',
-    tags: ['React', 'TypeScript', 'Tailwind', 'Framer Motion'],
+    tags: ['React', 'Tailwind', 'Framer Motion'],
     imageUrl: '/pathfinding.png',
     href: 'https://algo-visualizer-nine.vercel.app/',
   },
@@ -83,3 +75,5 @@ export const projectsData: ProjectData[] = [
   //     href: 'https://ltree-clone.vercel.app/',
   //   },
 ];
+
+export const goProjects = [{}];

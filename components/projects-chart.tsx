@@ -71,46 +71,48 @@ const ProjectsChart = ({ languages }: ProjectsChartProps) => {
   const chartData = generateChartData();
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Languages</CardTitle>
-        {/* <CardDescription>January - June 2024</CardDescription> */}
-      </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie data={chartData} dataKey="percent" nameKey="language">
-              {chartData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={chartConfig[entry.language]?.color}
-                />
-              ))}
-            </Pie>
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex flex-wrap gap-2">
-          {chartData.map(({ language, percent }, index) => (
-            <div key={index} className="flex items-center gap-1">
-              <span
-                className="block w-3 h-3 rounded-full"
-                style={{ backgroundColor: chartConfig[language]?.color }}
+    <div className="hidden md:block">
+      <Card className="flex flex-col">
+        <CardHeader className="items-center pb-0">
+          <CardTitle>Languages</CardTitle>
+          {/* <CardDescription>January - June 2024</CardDescription> */}
+        </CardHeader>
+        <CardContent className="flex-1 pb-0">
+          <ChartContainer
+            config={chartConfig}
+            className="mx-auto aspect-square max-h-[250px]"
+          >
+            <PieChart>
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
               />
-              <span>{`${language}: ${percent.toFixed(2)}%`}</span>
-            </div>
-          ))}
-        </div>
-      </CardFooter>
-    </Card>
+              <Pie data={chartData} dataKey="percent" nameKey="language">
+                {chartData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={chartConfig[entry.language]?.color}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+        <CardFooter className="flex-col gap-2 text-sm">
+          <div className="flex flex-wrap gap-2">
+            {chartData.map(({ language, percent }, index) => (
+              <div key={index} className="flex items-center gap-1">
+                <span
+                  className="block w-3 h-3 rounded-full"
+                  style={{ backgroundColor: chartConfig[language]?.color }}
+                />
+                <span>{`${language}: ${percent.toFixed(2)}%`}</span>
+              </div>
+            ))}
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
   );
 };
 

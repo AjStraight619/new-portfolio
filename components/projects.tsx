@@ -3,6 +3,9 @@ import { ProjectData } from '@/lib/types';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Project from './project';
+import SectionDivider from './section-divider';
+import SectionHeading from './section-header';
+import { Section } from 'lucide-react';
 
 type ProjectsProps = {
   totalCommits: number;
@@ -11,15 +14,21 @@ type ProjectsProps = {
 
 const Projects = ({ totalCommits, projects }: ProjectsProps) => {
   return (
-    <section className="w-full flex justify-center items-center pt-12">
-      <motion.ul className="flex flex-col items-center justify-center gap-4 w-full max-w-4xl">
-        {projects.map((proj, idx) => (
-          <motion.li key={idx}>
-            <Project totalCommits={totalCommits} project={proj} />
-          </motion.li>
-        ))}
-      </motion.ul>
-    </section>
+    <div className="w-full flex flex-col justify-center items-center">
+      <section className="pt-12">
+        <SectionHeading>Web Projects</SectionHeading>
+        <motion.ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {projects.map((proj, idx) => (
+            <motion.li key={idx}>
+              <Project totalCommits={totalCommits} project={proj} />
+            </motion.li>
+          ))}
+        </motion.ul>
+      </section>
+      <section className="pt-12">
+        <SectionHeading>Other</SectionHeading>
+      </section>
+    </div>
   );
 };
 

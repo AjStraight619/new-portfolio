@@ -1,8 +1,10 @@
 import { Octokit } from 'octokit';
 import { OWNER } from './data';
+import { cache } from 'react';
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN!,
+  request: {},
 });
 
 export const dynamicDataFetcher = async (repo: string) => {
