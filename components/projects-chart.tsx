@@ -19,6 +19,7 @@ import {
 
 type ProjectsChartProps = {
   languages: { [key: string]: number };
+  allImagesLoaded: boolean;
 };
 
 const langMap: {
@@ -45,7 +46,7 @@ const langMap: {
   },
 };
 
-const ProjectsChart = ({ languages }: ProjectsChartProps) => {
+const ProjectsChart = ({ languages, allImagesLoaded }: ProjectsChartProps) => {
   const generateChartConfig = useCallback((): ChartConfig => {
     const config: ChartConfig = {};
 
@@ -77,26 +78,31 @@ const ProjectsChart = ({ languages }: ProjectsChartProps) => {
           <CardTitle>Languages</CardTitle>
           {/* <CardDescription>January - June 2024</CardDescription> */}
         </CardHeader>
+
         <CardContent className="flex-1 pb-0">
-          <ChartContainer
-            config={chartConfig}
-            className="mx-auto aspect-square max-h-[250px]"
-          >
-            <PieChart>
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
-              <Pie data={chartData} dataKey="percent" nameKey="language">
-                {chartData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={chartConfig[entry.language]?.color}
-                  />
-                ))}
-              </Pie>
-            </PieChart>
-          </ChartContainer>
+          {allImagesLoaded ? (
+            <ChartContainer
+              config={chartConfig}
+              className="mx-auto aspect-square h-[200px]"
+            >
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie data={chartData} dataKey="percent" nameKey="language">
+                  {chartData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={chartConfig[entry.language]?.color}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ChartContainer>
+          ) : (
+            <div className="h-[200px] w-full"></div>
+          )}
         </CardContent>
         <CardFooter className="flex-col gap-2 text-sm">
           <div className="flex flex-wrap gap-2">

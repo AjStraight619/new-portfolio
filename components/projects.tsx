@@ -1,6 +1,6 @@
 'use client';
 import { ProjectData } from '@/lib/types';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Project from './project';
 import SectionDivider from './section-divider';
@@ -13,6 +13,18 @@ type ProjectsProps = {
 };
 
 const Projects = ({ totalCommits, projects }: ProjectsProps) => {
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImagesLoaded(prev => prev + 1);
+  };
+
+  useEffect(() => {
+    if (imagesLoaded === projects.length) {
+      setAllImagesLoaded(true);
+    }
+  }, [imagesLoaded, projects.length]);
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <section className="pt-12">
@@ -20,7 +32,12 @@ const Projects = ({ totalCommits, projects }: ProjectsProps) => {
         <motion.ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {projects.map((proj, idx) => (
             <motion.li key={idx}>
-              <Project totalCommits={totalCommits} project={proj} />
+              <Project
+                totalCommits={totalCommits}
+                project={proj}
+                onImageLoad={handleImageLoad}
+                allImagesLoaded={allImagesLoaded}
+              />
             </motion.li>
           ))}
         </motion.ul>

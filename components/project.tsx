@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 import {
   Card,
   CardContent,
@@ -16,9 +16,16 @@ import { Badge } from './ui/badge';
 type ProjectProps = {
   project: ProjectData;
   totalCommits: number;
+  onImageLoad: () => void;
+  allImagesLoaded: boolean;
 };
 
-const Project = ({ project, totalCommits }: ProjectProps) => {
+const Project = ({
+  project,
+  totalCommits,
+  onImageLoad,
+  allImagesLoaded,
+}: ProjectProps) => {
   console.log('Project image url: ', project.imageUrl);
   const tags = project.tags.map((tag, idx) => {
     const TagIcon = TAGS_MAP[tag]?.icon;
@@ -42,8 +49,6 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
     return <Badge key={idx}>{tag}</Badge>;
   });
 
-  if (!project?.languages) return null;
-
   return (
     <Card className="relative w-full max-w-3xl">
       <div className="absolute top-4 right-4 flex flex-col items-center gap-2">
@@ -60,6 +65,7 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
       <CardContent className="flex flex-row gap-2">
         <Image
           src={project.imageUrl}
+          onLoad={onImageLoad}
           alt="Project I worked on"
           priority={true}
           width={600}
@@ -80,13 +86,15 @@ const Project = ({ project, totalCommits }: ProjectProps) => {
 
           group-even:right-[initial] group-even:-left-40"
         />
-        {project?.languages && <ProjectsChart languages={project.languages} />}
+        {project?.languages && (
+          <ProjectsChart
+            languages={project.languages}
+            allImagesLoaded={allImagesLoaded}
+          />
+        )}
       </CardContent>
       <CardFooter>
-        <div className="flex flex-wrap items-center gap-3">
-          {/* <span className="text-muted-foreground mr-2">Tech Stack:</span> */}
-          {tags}
-        </div>
+        <div className="flex flex-wrap items-center gap-3">{tags}</div>
       </CardFooter>
     </Card>
   );

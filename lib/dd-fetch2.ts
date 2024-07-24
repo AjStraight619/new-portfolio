@@ -1,5 +1,4 @@
 import { OWNER } from './data';
-import { cache } from 'react';
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
 

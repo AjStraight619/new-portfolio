@@ -4,7 +4,15 @@ import { Badge } from './ui/badge';
 import { TAGS_MAP } from '@/lib/constants';
 import { motion } from 'framer-motion';
 
-const skills = ['TypeScript', 'Go', 'React', 'Next.JS'];
+const skills = [
+  'TypeScript',
+  'Go',
+  'React',
+  'Next.JS',
+  'Zod',
+  'Framer Motion',
+  'Prisma',
+];
 
 const container = {
   hidden: {
@@ -30,27 +38,6 @@ const item = {
 };
 
 const Skills = () => {
-  const tags = skills.map((tag, idx) => {
-    const TagIcon = TAGS_MAP[tag]?.icon;
-    const color = TAGS_MAP[tag]?.color;
-
-    if (TagIcon) {
-      return (
-        <Badge
-          key={idx}
-          style={{
-            borderColor: `${color}`,
-          }}
-          className="inline-flex items-center mr-2"
-        >
-          <TagIcon style={{ color, fontSize: '20px', marginRight: '8px' }} />
-          <span>{tag}</span>
-        </Badge>
-      );
-    }
-
-    return <Badge key={idx}>{tag}</Badge>;
-  });
   return (
     <section className="pt-12 container">
       <motion.ul
@@ -59,7 +46,6 @@ const Skills = () => {
         animate="show"
         className="flex flex-wrap items-center justify-center gap-2"
       >
-        {/* {tags} */}
         {skills.map((skill, idx) => {
           const TagIcon = TAGS_MAP[skill]?.icon;
           const color = TAGS_MAP[skill]?.color;

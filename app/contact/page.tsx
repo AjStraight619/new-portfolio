@@ -25,7 +25,10 @@ const ContactPage = () => {
               <CardTitle>Contact</CardTitle>
               <CardDescription>
                 Please contact me directly at{' '}
-                <a className="underline" href="mailto:astraight9409@sdsu.edu">
+                <a
+                  className="underline hover:text-primary transition-colors duration-150"
+                  href="mailto:astraight9409@sdsu.edu"
+                >
                   AlexStraight619@gmail.com
                 </a>{' '}
                 or through this form.
