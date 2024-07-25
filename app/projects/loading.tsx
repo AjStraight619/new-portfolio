@@ -1,3 +1,3 @@
-export default function LoadingPage() {
+export default function LoadingProjects() {
   return <div></div>;
 }
